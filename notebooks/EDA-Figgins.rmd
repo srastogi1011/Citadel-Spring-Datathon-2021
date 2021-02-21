@@ -1,0 +1,191 @@
+---
+title: "EDA_Datathon2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "~/Documents/datathon2021")
+
+library(tidyverse)
+```
+
+## Loading Data and Basic Cleaning
+
+```{r, echo=FALSE}
+# Load the data
+owid <- read.csv("data/1_owid/owid-covid-data.csv")
+ecdc <- read.csv("data/2_ecdc/testing.csv")
+cvd_tracking <- read.csv("data/3_covidtracking/alabama-history.csv")
+```
+
+```{r}
+owid <- owid %>%
+  mutate(date = as.Date(date))
+
+ecdc <- ecdc %>%
+  mutate(date = paste0(year_week, "-1")) %>%
+  mutate(date = as.Date(date, "%Y-W%U-%u"))
+
+cvd_tracking <- cvd_tracking %>%
+  mutate(date = as.Date(date))
+```
+
+## Basic Plots
+
+### Focusing on `owid` data set and new variants
+
+Let's take a look at some of the countries commonly discussed in the COVID-19 pandemic.
+
+```{r, fig.width=8, fig.height=6}
+owid %>%
+  filter(location %in% c("United States", "United Kingdom", "South Africa","Sweden","China", "Vietnam")) %>%
+  ggplot(aes(x = date, y = new_cases_smoothed_per_million, group = location, color = location)) +
+  geom_line() + 
+  scale_x_date(date_labels = "%b") +
+  xlab("") +
+  ylab("New Cases per Million") +
+  ggtitle("(Smoothed) New Cases per million in select countries") + theme_bw()
+```
+
+Let's subset this picture to the countries concerned with new variants, specifically the UK and South Africa. New variant in the UK was first detected in UK in early December. 
+
+```{r}
+owid %>%
+  filter(location %in% c("United Kingdom", "South Africa")) %>%
+  ggplot(aes(x = date, y = new_cases_smoothed_per_million, group = location, color = location)) +
+  geom_line() + 
+  scale_x_date(date_labels = "%b") +
+  xlab("") +
+  ylab("New Cases per Million") +
+  geom_vline(xintercept = as.Date("2020/12/01"), linetype = "dashed", size = 0.65) +
+  ggtitle("(Smoothed) new cases per million. Countries with emerging variants of concern.", subtitle = "B.1.1.7 Discovery labeled.") + theme_bw()
+```
+Are the synchronous takeoff observed in both SA and UK attributable to fitness differences inthe virus alone or also due to policy?
+
+#### Further Qustions:
+- Which countries see an uptick slightly after earlier December?
+- Have new variants also been discovered in these regions?
+
+## Testing in Europe `ecdc`
+```{r}
+## Filter by a country compare New Cases, Testing, Positivity rate
+## Does more testing automatically mean more cases? 
+```
+
+```{r}
+ecdc %>%
+  filter(country %in% c("Germany", "France", "Italy", "Spain", "Portugal")) %>%
+  ggplot(aes(x = date, y = new_cases, group = country, color = country)) +
+  geom_line() + 
+  scale_x_date(date_labels = "%b") +
+  xlab("") +
+  ylab("New Cases") +
+  ggtitle("") + theme_bw()
+```
+
+```{r}
+## Visualize testing rate and positive tests
+ecdc %>%
+  filter(country %in% c("Germany", "France", "Italy", "Spain", "Portugal")) %>%
+  ggplot(aes(x = date, y = positivity_rate, group = country, color = country)) +
+  geom_line() + 
+  scale_x_date(date_labels = "%b") +
+  xlab("") +
+  ylab("+ rate") +
+  ggtitle("") + theme_bw()
+```
+
+```{r}
+## Visualize testing rate and positive tests
+ecdc %>%
+  mutate(frac_tested = tests_done / population) %>%
+  filter(country %in% c("Germany", "France", "Italy", "Spain", "Portugal")) %>%
+  ggplot(aes(x = date, y = frac_tested, group = country, color = country)) +
+  geom_line() + 
+  scale_x_date(date_labels = "%b") +
+  xlab("") +
+  ylab("Fraction of population tested per week") +
+  ggtitle("") + theme_bw()
+```
+Sampling fraction + New Cases reveals trends in the virus? 
+
+Why is sampling fraction so consistent across countries visualized? Is this correlated elsewhere?
+
+What is the best case fraction of the population tested?
+
+Who is begin tested? Is this trend reconcilable outside of the wealth countries?
+
+### Further questions
+
+## COVID Tracking `alabama-history`
+
+Be wary with this data set as several values are computed, so any correlations may be meaningless as they are not relationships between data but representative of some mathematical relationship.
+
+Is looking at the national data? In many ways, an epidemic is a signal comprised of several smaller transmission chains. A national epidemic is comprised of several smaller local epidemics. Even so, let's take a look at Alabama:
+
+```{r}
+cvd_tracking %>%
+  ggplot(aes(x = date, y = deathConfirmed)) +
+  geom_line() + theme_bw()
+```
+```{r}
+## What is going on here?
+cvd_tracking %>%
+  filter( deathIncrease < 0)
+```
+
+## Personal Interests
+
+How government policy influences panic buying?
+
+Is there a way to look at testing patterns across regions to get an idea of the effectiveness of surveillance in an area?
+
+-  How well resourced are different regions?
+- 14 states with data on staffing on contact tracing?
+- How does public availability correlate with the ability for the public to be informed?
+- Does having data public have beneficial effects on the trajectory of the epidemic? 
+- Does perceived risk correlate with the behavioral changes and resultant cases?
+- Resultant trends 
+
+## Factors indicative of better surveillance
+
+- Higher test positivity rate with fewer samples 
+- Add parameter for `targeting` accuracy. How well are folks able to target likely infections? What are artifacts of this in data? This parameter will determine $\rho$.
+
+```{r}
+## Looking at sampling fraction of population and using that to get at prevalence
+```
+
+### Possible Bayesian Model
+
+We assume that number of cases on a day $C_t$ are sampled from $N_\text{Tests}$ which are $\tau$ percent of which are targeted. Here, $\rho_{CT}$ denotes the effectiveness of contact tracing. All other tests are given to those who have a hit rate proportional to the underlying prevalence $\rho_t$ (we can pool this across countries)?.
+
+$$
+C_t \sim \text{Binom}(\tau N_\text{t}, \rho_\text{CT}) + \text{Binom}((1-\tau)N_\text{t}, \rho_{\text{t}})
+$$
+
+Countries with ability to contact trace will have higher $\rho_\text{targetted}$ and likely $\tau$. This has expectation
+
+$$
+\mathbb{E}[C_t] = \tau N_\text{t} \rho_\text{CT} + (1 - \tau) N_\text{t} \rho_\text{t}
+$$
+How can we estimate $\tau$ and the success of the contact tracing $\rho_{CT}$ using number of tests and the cases? We have that
+
+$$
+\mathbb{E}[(\text{+ Rate})_t] = \frac{\mathbb{E}[C_t]}{N_t} = \tau \rho_{CT} + (1 - \tau) \rho_{t}
+$$
+
+How would we model $\rho_t$?
+
+$$
+\rho_t = \lambda_t \rho_{t-1}?
+$$
+
+Implement this model in Julia.
+
+Contact tracing ability has ramped up
+
+```{r}
+ggplot(aes(x = Deaths, y = dataQuality))
+```
