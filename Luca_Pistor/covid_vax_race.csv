@@ -1,0 +1,52 @@
+﻿Location,Race Categories Include Hispanic Individuals,White % of Vaccinations,Black % of Vaccinations,Hispanic % of Vaccinations,Asian % of Vaccinations,American Indian or Alaska Native % of Vaccinations,Native Hawaiian or Other Pacific Islander % of Vaccinations,Other % of Vaccinations,% of Vaccinations with Known Race,% of Vaccinations with Unknown Race,% of Vaccinations with Known Ethnicity,% of Vaccinations with Unknown Ethnicity
+Maine,,0.97,0.01,0.01,0.01,0.01,<.01,NR,0.7,0.3,0.62,0.38
+Vermont,Yes,0.97,0.01,0.01,0.01,<.01,<.01,0.01,NR,NR,NR,NR
+Iowa,Yes,0.96,0.01,0.02,0.01,<.01,<.01,0.01,0.8,0.2,0.75,0.25
+West Virginia,Yes,0.96,0.02,NR,NR,NR,NR,0.01,0.95,0.05,NR,NR
+Wisconsin,Yes,0.95,0.02,0.02,0.02,0.01,NR,NR,0.87,0.13,0.93,0.07
+Pennsylvania,Yes,0.92,0.03,0.02,<.01,NR,NR,0.05,0.74,0.26,0.64,0.36
+Indiana,Yes,0.91,0.04,0.02,0.02,NR,NR,0.03,0.95,0.05,0.91,0.09
+Nebraska,Yes,0.89,0.03,0.03,0.01,<.01,<.01,0.06,0.96,0.04,0.95,0.05
+Colorado,,0.87,0.02,0.06,0.02,0.01,<.01,0.02,0.85,0.15,0.85,0.15
+Kentucky,Yes,0.87,0.04,NR,0.01,<.01,<.01,0.08,0.84,0.16,NR,NR
+Utah,,0.86,0.01,0.05,0.02,0.01,<.01,0.05,0.69,0.31,0.69,0.31
+Missouri,Yes,0.84,0.05,0.03,0.02,<.01,<.01,0.08,NR,NR,NR,NR
+Ohio,Yes,0.82,0.06,0.02,0.02,<.01,<.01,0.1,0.92,0.08,0.76,0.24
+Massachusetts,,0.81,0.06,0.05,0.05,<.01,<.01,0.02,0.79,0.21,0.79,0.21
+Alabama,Yes,0.8,0.17,0.02,0.02,<.01,<.01,0.01,0.68,0.32,0.11,0.89
+Tennessee,Yes,0.8,0.08,0.02,0.01,NR,NR,0.11,0.89,0.11,0.82,0.18
+Florida,Yes,0.78,0.06,0.16,NR,<.01,NR,0.15,0.83,0.17,0.57,0.43
+New York,Yes,0.78,0.09,0.09,0.12,NR,NR,0.01,0.96,0.04,0.98,0.02
+North Carolina,Yes,0.78,0.15,0.02,0.02,0.01,NR,0.04,0.99,<.01,0.99,<.01
+Rhode Island,,0.78,0.04,0.09,0.02,<.01,<.01,0.07,0.75,0.25,0.75,0.25
+Arizona,,0.76,0.02,0.13,0.04,0.05,<.01,NR,0.63,0.37,0.63,0.37
+Illinois,,0.74,0.08,0.09,0.06,<.01,<.01,0.03,0.9,0.1,0.9,0.1
+Delaware,,0.73,0.09,0.03,0.03,NR,NR,0.12,0.79,0.21,0.79,0.21
+Virginia,,0.72,0.12,0.06,0.05,0.01,NR,0.05,0.65,0.35,0.65,0.35
+Mississippi,Yes,0.69,0.22,0.01,0.01,<.01,<.01,0.07,0.82,0.18,0.89,0.11
+South Carolina,Yes,0.69,0.14,0.01,NR,NR,NR,0.17,0.92,0.08,0.87,0.13
+Washington,,0.67,0.02,0.05,0.08,0.02,0.01,0.15,0.89,0.11,0.89,0.11
+Maryland,Yes,0.66,0.16,0.04,0.06,<.01,<.01,0.1,0.94,0.06,0.88,0.12
+Oregon,Yes,0.65,0.01,0.06,0.04,0.02,0.01,0.28,0.87,0.13,0.77,0.23
+New Jersey,,0.63,0.04,0.06,0.07,NR,NR,0.19,0.83,0.17,0.83,0.17
+Louisiana,Yes,0.55,0.21,NR,0.02,<.01,<.01,0.23,0.86,0.14,NR,NR
+Texas,,0.51,0.07,0.2,0.08,NR,NR,0.14,0.65,0.35,0.65,0.35
+California,,0.36,0.03,0.18,0.14,<.01,<.01,0.28,0.91,0.09,0.91,0.09
+Alaska,Yes,0.3,0.01,0.03,0.03,0.36,<.01,0.3,0.71,0.29,0.72,0.28
+Arkansas,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Connecticut,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+District of Columbia,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Georgia,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Hawaii,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Idaho,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Kansas,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Michigan,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Minnesota,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Montana,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Nevada,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+New Hampshire,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+New Mexico,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+North Dakota,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Oklahoma,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+South Dakota,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
+Wyoming,,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR
