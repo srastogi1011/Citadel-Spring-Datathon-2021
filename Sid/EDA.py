@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sn
 import scipy.stats as stats
 
-df = pd.read_csv('~/Documents/Citadel Datathons/Spring 2021 Datathon/Datathon Materials/3_covidtracking/alabama-history.csv')
+df = pd.read_csv('~/Documents/Citadel Datathons/Spring 2021 Datathon/Sid/Datathon Materials/3_covidtracking/alabama-history.csv')
 
 def returnGrade(letter):
     dataGrades = {'A': 3, 'B': 2, 'C': 1, 'F': 0}
@@ -15,13 +15,14 @@ df['dataQualityAsNum'] = df.apply(lambda row: returnGrade(row.dataQualityGrade),
 
 df = df.dropna(axis=1,how='all')
 
-dropCols = ['hospitalizedCumulative', 'negative', 'negativeIncrease', 'negativeTestsAntibody', 'negativeTestsPeopleAntibody', 'negativeTestsViral', 'onVentilatorCumulative', 'onVentilatorCurrently', 'positiveScore', 'totalTestEncountersViralIncrease', 'totalTestsPeopleViral', 'totalTestsPeopleViralIncrease', 'totalTestsViralIncrease']
-df = df.drop(columns=[c for c in dropCols if c in df.columns])
+df = df[['date', 'death', 'deathConfirmed', 'deathIncrease', 'positive', 'positiveIncrease', 'totalTestResults', 'totalTestResultsIncrease', 'dataQualityAsNum']]
+
 print(df.head())
 
 corrMatrix = df.corr()
 sn.heatmap(corrMatrix, annot=True)
-plt.show()
+plt.tight_layout()
+plt.savefig('CorrMatrix.png')
 
 '''
 al_df = df[['dataQualityGrade', 'positive']].iloc[::-1].set_index(df.index)
